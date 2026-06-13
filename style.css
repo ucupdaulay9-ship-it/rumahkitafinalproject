@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap');
+
+/* ini adalah bagian variabel warna coklat */
+:root {
+    --coklat-gelap: #2B1810;
+    --coklat-tua: #5C4033;
+    --coklat-sedang: #8B5A2B;
+    --coklat-muda: #D2B48C;
+    --krem-lembut: #F5ECE4;
+    --putih: #FFFFFF;
+}
+/* ini adalah akhir bagian variabel warna coklat */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ini adalah bagian background utama web */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Mengubah background menjadi gradasi coklat romantis */
+    background: linear-gradient(135deg, var(--coklat-gelap), var(--coklat-tua));
+    color: var(--coklat-tua);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+/* ini adalah akhir bagian background utama web */
+
+/* ini adalah bagian elemen dekorasi pemanis background */
+.bg-decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.floating-heart {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.2;
+    animation: floatAnimation 8s infinite linear;
+}
+.floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-heart:nth-child(2) { left: 30%; animation-delay: 2s; font-size: 18px; }
+.floating-heart:nth-child(3) { left: 70%; animation-delay: 4s; }
+.floating-heart:nth-child(4) { left: 85%; animation-delay: 6s; font-size: 20px; }
+
+@keyframes floatAnimation {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+/* ini adalah akhir bagian elemen dekorasi pemanis background */
+
+/* ini adalah bagian card login */
+.login-container {
+    width: 90%;
+    max-width: 360px;
+    z-index: 2;
+}
+.card {
+    background: var(--krem-lembut);
+    border: 3px solid var(--putih); /* Garis pembatas pemanis */
+    border-radius: 25px;
+    padding: 40px 24px 30px 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    position: relative;
+}
+/* Hiasan badge hati di atas card */
+.card-badge {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--putih);
+    color: #d9534f;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border: 2px solid var(--krem-lembut);
+}
+/* ini adalah akhir bagian card login */
+
+/* ini adalah bagian tumpukan foto */
+.photo-stack {
+    position: relative;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.photo-stack img {
+    width: 85px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px;
+    position: absolute;
+    border: 3px solid var(--putih);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+.photo-stack img:nth-child(1) { transform: rotate(-12deg) translateX(-45px); z-index: 1; }
+.photo-stack img:nth-child(2) { z-index: 2; transform: translateY(-5px); width: 90px; height: 115px; }
+.photo-stack img:nth-child(3) { transform: rotate(12deg) translateX(45px); z-index: 1; }
+
+/* Efek Highlight Aktif */
+.photo-stack img.active {
+    transform: scale(1.25) translateY(-15px) rotate(0deg);
+    z-index: 10;
+    box-shadow: 0 12px 24px rgba(92, 64, 51, 0.4);
+    border-color: var(--coklat-sedang);
+}
+/* ini adalah akhir bagian tumpukan foto */
+
+/* ini adalah bagian teks kata-kata */
+.kata-kata {
+    font-family: 'Sacramento', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--coklat-tua);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+/* ini adalah akhir bagian teks kata-kata */
+
+/* ini adalah bagian input sandi grup */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 2px solid var(--muda);
+    background-color: var(--putih);
+    border: 2px solid rgba(139, 90, 43, 0.2);
+    border-radius: 12px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    color: var(--coklat-tua);
+    font-size: 14px;
+    transition: 0.3s;
+}
+input[type="password"]:focus {
+    border-color: var(--coklat-sedang);
+    box-shadow: 0 0 8px rgba(139, 90, 43, 0.2);
+}
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--coklat-muda);
+    font-size: 14px;
+}
+/* ini adalah akhir bagian input sandi grup */
+
+/* ini adalah bagian tombol login */
+button.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, var(--coklat-tua), var(--coklat-sedang));
+    color: var(--putih);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 5px 15px rgba(92, 64, 51, 0.3);
+    transition: 0.3s;
+}
+button.btn-login i { margin-left: 5px; font-size: 12px; }
+/* ini adalah akhir bagian tombol login */
+
+/* ini adalah bagian custom alert box */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(43, 24, 16, 0.75);
+    backdrop-filter: blur(4px); /* Efek blur estetik di belakang alert */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+.alert-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+.alert-box {
+    background: var(--putih);
+    width: 80%;
+    max-width: 300px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 3px solid var(--krem-lembut);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.alert-overlay.show .alert-box {
+    transform: scale(1);
+}
+.alert-icon {
+    font-size: 45px;
+    color: #d9534f;
+    margin-bottom: 15px;
+    animation: heartBeat 1.5s infinite;
+}
+.alert-box h3 {
+    font-size: 18px;
+    color: var(--coklat-tua);
+    margin-bottom: 8px;
+}
+.alert-box p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 20px;
+}
+.btn-alert-close {
+    padding: 10px 25px;
+    background-color: var(--coklat-sedang);
+    color: var(--putih);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+/* ini adalah akhir bagian custom alert box */
+
+
+/* --- INI ADALAH BAGIAN TAMPILAN MENU UTAMA (APP.HTML) --- */
+.app-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--krem-lembut); /* Menutup background gelap dari login */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.content-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    padding-bottom: 80px; /* Ruang agar konten tidak tertutup navigasi bawah */
+}
+
+.section { display: none; animation: fadeIn 0.5s; }
+.section.active { display: block; }
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* ini adalah bagian navigasi bawah */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--putih);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -4px 15px rgba(92, 64, 51, 0.1);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--coklat-muda);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.nav-item i { font-size: 20px; margin-bottom: 4px; transition: 0.3s; }
+.nav-item.active { color: var(--coklat-tua); font-weight: 600; }
+.nav-item.active i { transform: translateY(-3px); color: var(--coklat-sedang); }
+
+/* ini adalah bagian tombol logout */
+.btn-logout {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #d9534f;
+    color: var(--putih);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+/* --- INI ADALAH AKHIR BAGIAN TAMPILAN MENU UTAMA --- */

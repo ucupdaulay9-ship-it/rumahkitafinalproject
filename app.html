@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Kita</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="content-area">
+            <div id="beranda" class="section active">
+                <h2>Beranda</h2>
+                <p>Selamat datang di ruang rahasia kita.</p>
+            </div>
+
+            <div id="cerita" class="section">
+                <h2>Cerita Kita</h2>
+                <p>Nantinya bisa diisi foto atau timeline awal mula bertemu.</p>
+            </div>
+
+            <div id="ruangrasa" class="section">
+                <h2>Ruang Rasa</h2>
+                <p>Tempat menulis surat-surat kecil atau pesan rindu.</p>
+            </div>
+
+            <div id="minigame" class="section">
+                <h2>Mini Game</h2>
+                <p>Permainan kecil untuk kalian berdua nanti.</p>
+            </div>
+
+            <div id="account" class="section">
+                <h2>Profilku</h2>
+                <div style="background: white; padding: 20px; border-radius: 15px; margin-top: 15px; text-align: center;">
+                    <img id="userPhoto" src="" style="width: 80px; border-radius: 50%; margin-bottom: 10px;">
+                    <h3 id="userName">Memuat nama...</h3>
+                    <button class="btn-logout" onclick="logout()">Keluar Ruangan</button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" onclick="bukaMenu('beranda', this)">
+                <i class="fa-solid fa-house-chimney-heart"></i>
+                <span>Beranda</span>
+            </a>
+            <a href="#" class="nav-item" onclick="bukaMenu('cerita', this)">
+                <i class="fa-solid fa-book-heart"></i>
+                <span>Cerita Kita</span>
+            </a>
+            <a href="#" class="nav-item" onclick="bukaMenu('ruangrasa', this)">
+                <i class="fa-solid fa-envelope-open-heart"></i>
+                <span>Ruang Rasa</span>
+            </a>
+            <a href="#" class="nav-item" onclick="bukaMenu('minigame', this)">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Mini Game</span>
+            </a>
+            <a href="#" class="nav-item" onclick="bukaMenu('account', this)">
+                <i class="fa-solid fa-user-heart"></i>
+                <span>Account</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

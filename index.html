@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untukmu - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+</head>
+<body>
+
+    <div class="bg-decorations">
+        <div class="floating-heart">❤️</div>
+        <div class="floating-heart">🤎</div>
+        <div class="floating-heart">❤️</div>
+        <div class="floating-heart">🤎</div>
+    </div>
+    <div class="login-container">
+        <div class="card">
+            <div class="card-badge"><i class="fa-solid fa-heart"></i></div>
+
+            <div class="photo-stack" id="photoStack">
+                <img src="foto1.jpg" alt="Foto 1" onclick="highlightPhoto(event, this)">
+                <img src="foto2.jpg" alt="Foto 2" onclick="highlightPhoto(event, this)">
+                <img src="foto3.jpg" alt="Foto 3" onclick="highlightPhoto(event, this)">
+            </div>
+            
+            <div class="kata-kata">
+                Hanya untuk yang memiliki kunci hatiku...
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="passwordInput" placeholder="Masukkan sandi rahasia...">
+                <i class="fa-solid fa-lock input-icon"></i>
+            </div>
+            <button class="btn-login" onclick="mulaiLogin()">Buka Kunci <i class="fa-solid fa-key"></i></button>
+        </div>
+    </div>
+    <div id="customAlert" class="alert-overlay">
+        <div class="alert-box">
+            <div class="alert-icon"><i class="fa-solid fa-heart-crack"></i></div>
+            <h3>Aduh, Sayang...</h3>
+            <p id="alertMessage">Kata sandinya masih salah, coba diingat-ingat lagi ya!</p>
+            <button class="btn-alert-close" onclick="tutupAlert()">Coba Lagi</button>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
