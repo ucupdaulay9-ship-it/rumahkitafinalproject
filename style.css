@@ -1,0 +1,1277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap');
+
+/* ini adalah bagian variabel warna coklat */
+:root {
+    --coklat-gelap: #2B1810;
+    --coklat-tua: #5C4033;
+    --coklat-sedang: #8B5A2B;
+    --coklat-muda: #D2B48C;
+    --krem-lembut: #F5ECE4;
+    --putih: #FFFFFF;
+}
+/* ini adalah akhir bagian variabel warna coklat */
+
+* { margin: 0; padding: 0; box-sizing: border-box; 
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ini adalah bagian background utama web */
+/* Ganti bagian body yang lama dengan ini */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Gradasi dibuat lebih kompleks dan digerakkan */
+    background: linear-gradient(-45deg, var(--coklat-gelap), var(--coklat-tua), #4A2E1B, var(--coklat-gelap));
+    background-size: 400% 400%;
+    animation: gradientGerak 10s ease infinite;
+    color: var(--coklat-tua);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gradientGerak {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ini adalah akhir bagian background utama web */
+
+/* ini adalah bagian elemen dekorasi pemanis background */
+
+.bg-decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-item {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    bottom: -50px;
+    animation: floatHeboh 6s infinite ease-in-out;
+}
+
+.floating-item:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 28px; }
+.floating-item:nth-child(2) { left: 30%; animation-delay: 2s; font-size: 18px; }
+.floating-item:nth-child(3) { left: 50%; animation-delay: 4s; font-size: 22px; }
+.floating-item:nth-child(4) { left: 70%; animation-delay: 1s; font-size: 26px; }
+.floating-item:nth-child(5) { left: 85%; animation-delay: 3s; font-size: 20px; }
+.floating-item:nth-child(6) { left: 20%; animation-delay: 5s; font-size: 24px; }
+.floating-item:nth-child(7) { left: 60%; animation-delay: 2.5s; font-size: 16px; }
+
+@keyframes floatHeboh {
+    0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.8; }
+    50% { transform: translateY(-50vh) scale(1.2) rotate(180deg); opacity: 1; }
+    80% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) scale(0.8) rotate(360deg); opacity: 0; }
+}
+
+/* ini adalah akhir bagian elemen dekorasi pemanis background */
+
+/* ini adalah bagian card login */
+.login-container {
+    width: 90%;
+    max-width: 360px;
+    z-index: 2;
+}
+.card {
+    background: var(--krem-lembut);
+    border: 3px solid var(--putih); /* Garis pembatas pemanis */
+    border-radius: 25px;
+    padding: 40px 24px 30px 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    position: relative;
+}
+/* Hiasan badge hati di atas card */
+.card-badge {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--putih);
+    color: #d9534f;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border: 2px solid var(--krem-lembut);
+    animation: cardGlow 3s infinite alternate;
+}
+/* ini adalah akhir bagian card login */
+@keyframes cardGlow {
+    0% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 10px rgba(210, 180, 140, 0.2); }
+    100% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(210, 180, 140, 0.6); }
+}
+/* ini adalah bagian tumpukan foto */
+.photo-stack {
+    position: relative;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.photo-stack img {
+    width: 85px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px;
+    position: absolute;
+    border: 3px solid var(--putih);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+.photo-stack img:nth-child(1) { transform: rotate(-12deg) translateX(-45px); z-index: 1; }
+.photo-stack img:nth-child(2) { z-index: 2; transform: translateY(-5px); width: 90px; height: 115px; }
+.photo-stack img:nth-child(3) { transform: rotate(12deg) translateX(45px); z-index: 1; }
+
+/* Efek Highlight Aktif */
+.photo-stack img.active {
+    transform: scale(1.25) translateY(-15px) rotate(0deg);
+    z-index: 10;
+    box-shadow: 0 12px 24px rgba(92, 64, 51, 0.4);
+    border-color: var(--coklat-sedang);
+}
+/* ini adalah akhir bagian tumpukan foto */
+
+/* ini adalah bagian teks kata-kata */
+/* Ganti class .kata-kata dengan yang ini */
+.kata-kata {
+    font-family: 'Sacramento', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    
+    /* Efek teks berkilau */
+    background: linear-gradient(to right, var(--coklat-tua) 20%, #d9534f 50%, var(--coklat-tua) 80%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shineText 3s linear infinite;
+}
+
+@keyframes shineText {
+    to { background-position: 200% center; }
+}
+
+/* ini adalah akhir bagian teks kata-kata */
+
+/* ini adalah bagian input sandi grup */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 2px solid var(--muda);
+    background-color: var(--putih);
+    border: 2px solid rgba(139, 90, 43, 0.2);
+    border-radius: 12px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    color: var(--coklat-tua);
+    font-size: 14px;
+    transition: 0.3s;
+}
+input[type="password"]:focus {
+    border-color: var(--coklat-sedang);
+    box-shadow: 0 0 8px rgba(139, 90, 43, 0.2);
+}
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--coklat-muda);
+    font-size: 14px;
+}
+/* ini adalah akhir bagian input sandi grup */
+
+/* ini adalah bagian tombol login */
+button.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, var(--coklat-tua), var(--coklat-sedang));
+    color: var(--putih);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 5px 15px rgba(92, 64, 51, 0.3);
+    transition: 0.3s;
+    animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+    0% { transform: scale(1); box-shadow: 0 5px 15px rgba(92, 64, 51, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 5px 25px rgba(210, 180, 140, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 5px 15px rgba(92, 64, 51, 0.3); }
+}
+
+button.btn-login i { margin-left: 5px; font-size: 12px; }
+/* ini adalah akhir bagian tombol login */
+
+/* ini adalah bagian custom alert box */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(43, 24, 16, 0.75);
+    backdrop-filter: blur(4px); /* Efek blur estetik di belakang alert */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+.alert-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+.alert-box {
+    background: var(--putih);
+    width: 80%;
+    max-width: 300px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 3px solid var(--krem-lembut);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.alert-overlay.show .alert-box {
+    transform: scale(1);
+}
+.alert-icon {
+    font-size: 45px;
+    color: #d9534f;
+    margin-bottom: 15px;
+    animation: heartBeat 1.5s infinite;
+}
+.alert-box h3 {
+    font-size: 18px;
+    color: var(--coklat-tua);
+    margin-bottom: 8px;
+}
+.alert-box p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 20px;
+}
+.btn-alert-close {
+    padding: 10px 25px;
+    background-color: var(--coklat-sedang);
+    color: var(--putih);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+/* ini adalah akhir bagian custom alert box */
+
+
+/* --- INI ADALAH BAGIAN TAMPILAN MENU UTAMA (APP.HTML) --- */
+/* --- UPDATE CONTAINER UTAMA --- */
+.app-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent; /* PENTING: Dibuat tembus pandang */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/* --- KODE LAYER BACKGROUND SMOOTH --- */
+.bg-theme {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Semua background disembunyikan di awal */
+    z-index: -1; /* Ditaruh di lapisan paling belakang */
+    transition: opacity 0.8s ease-in-out; /* INI KUNCI ANIMASI SMOOTH-NYA! */
+}
+
+.bg-theme.active-bg {
+    opacity: 1; /* Background aktif akan memudar masuk secara elegan */
+}
+
+/* 1. Tema Beranda */
+#bg-beranda {
+    background-color: #FDF7F2; 
+    background-image: radial-gradient(circle at center, var(--putih) 0%, rgba(245, 236, 228, 0.7) 60%, rgba(238, 208, 181, 0.8) 100%);
+}
+
+/* 2. Tema Cerita */
+#bg-cerita {
+    background-color: #FAF0E6; 
+    background-image: radial-gradient(#EAD4C0 15%, transparent 16%),
+                      radial-gradient(#EAD4C0 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+}
+
+/* 3. Tema Ruang Rasa */
+#bg-ruangrasa {
+    background-color: #FDF5E6; 
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 33.5l-1.3-1.2C14 28 10 24.2 10 19.5c0-3.8 3-6.8 6.8-6.8 2.2 0 4.2 1 5.2 2.6 1-1.6 3-2.6 5.2-2.6 3.8 0 6.8 3 6.8 6.8 0 4.7-4 8.5-8.7 12.8L20 33.5z' fill='%23D2B48C' fill-opacity='0.25'/%3E%3C/svg%3E");
+    background-size: 40px 40px;
+}
+
+/* 4. Tema Mini Game */
+#bg-minigame {
+    background-color: #FFF8DC; 
+    background-image: radial-gradient(circle at 100% 50%, transparent 20%, rgba(210, 180, 140, 0.1) 21%, rgba(210, 180, 140, 0.1) 34%, transparent 35%, transparent),
+                      radial-gradient(circle at 0% 50%, transparent 20%, rgba(210, 180, 140, 0.1) 21%, rgba(210, 180, 140, 0.1) 34%, transparent 35%, transparent);
+    background-size: 40px 50px;
+}
+
+/* 5. Tema Account */
+#bg-account {
+    background-color: var(--krem-lembut);
+    background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(245, 236, 228, 0.3),
+        rgba(245, 236, 228, 0.3) 10px,
+        rgba(255, 255, 255, 0.6) 10px,
+        rgba(255, 255, 255, 0.6) 20px
+    );
+    box-shadow: inset 0 0 40px rgba(139, 90, 43, 0.05);
+}
+
+
+
+
+.content-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    padding-bottom: 80px; /* Ruang agar konten tidak tertutup navigasi bawah */
+}
+
+/* --- KODE ANIMASI MENU YANG BENAR-BENAR SMOOTH --- */
+.section { 
+    display: none; 
+    /* Mengatur titik awal pergerakan agar terpusat */
+    transform-origin: top center; 
+}
+
+.section.active { 
+    display: block; 
+    /* Menggunakan kurva cubic-bezier khusus agar ada efek pantulan/rem halus di akhir pergerakan */
+    animation: menuMulusMasuk 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; 
+}
+
+@keyframes menuMulusMasuk { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(40px) scale(0.92); /* Berawal dari posisi bawah, agak mengecil, dan transparan */
+    } 
+    100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); /* Kembali ke ukuran dan posisi asli dengan pantulan lembut */
+    } 
+}
+
+
+/* ini adalah bagian navigasi bawah */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--coklat-tua); /* Diubah jadi coklat tua */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Memastikan isi pas di tengah vertikal */
+    padding: 8px 0; /* Background diperkecil/ditipiskan */
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Jarak antar menu terbagi rata sempurna */
+    color: var(--coklat-muda); /* Warna pasif */
+    font-size: 10px; /* Ukuran font diperkecil */
+    text-decoration: none;
+    white-space: nowrap; /* MENCEGAH TEKS TURUN KE BAWAH (wajib 1 baris) */
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Garis Pembatas antar menu */
+.nav-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background-color: rgba(210, 180, 140, 0.2); /* Garis samar pembatas */
+}
+
+.nav-item i { 
+    font-size: 18px; 
+    margin-bottom: 4px; 
+    /* Transisi mantul (bouncy) ala UI game */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+/* --- EFEK INTERAKSI SAAT MENU AKTIF --- */
+.nav-item.active { 
+    color: var(--putih); /* Teks jadi putih cerah */
+    font-weight: bold; 
+}
+
+.nav-item.active i { 
+    transform: translateY(-8px) scale(1.25); /* Ikon melompat naik & membesar */
+    color: var(--krem-lembut); 
+    text-shadow: 0 0 12px rgba(245, 236, 228, 0.8); /* Efek glowing cahaya */
+}
+
+/* Indikator titik nyala di bawah teks yang sedang aktif */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    width: 0;
+    height: 3px;
+    background-color: var(--krem-lembut);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.nav-item.active::before {
+    width: 15px; /* Titik muncul saat diklik */
+    box-shadow: 0 0 8px rgba(245, 236, 228, 0.8);
+}
+
+
+/* ini adalah bagian tombol logout */
+.btn-logout {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #d9534f;
+    color: var(--putih);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+/* --- INI ADALAH AKHIR BAGIAN TAMPILAN MENU UTAMA --- */
+
+
+
+/* --- OVERRIDE BERANDA AGAR TRANSPARAN --- */
+#beranda { background: transparent !important; border: none !important; box-shadow: none !important; padding-top: 0; }
+.beranda-header h2 { font-family: 'Sacramento', cursive; font-size: 38px; color: var(--coklat-tua); margin-bottom: 5px; }
+.beranda-header p { color: var(--coklat-sedang); font-size: 14px; margin-bottom: 20px; }
+
+/* --- OVERRIDE BERANDA AGAR TRANSPARAN --- */
+#beranda { background: transparent !important; border: none !important; box-shadow: none !important; padding-top: 0; }
+
+/* --- SISTEM GANTUNGAN & ANIMASI ANGIN --- */
+.sistem-gantungan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    animation: anginSepoi 6s ease-in-out infinite alternate; /* Gerakan angin lebih pelan dan santai */
+    padding-top: 10px; /* Jarak untuk paku atap */
+}
+
+@keyframes anginSepoi {
+    0% { transform: rotate(-0.5deg); }
+    100% { transform: rotate(0.5deg); }
+}
+
+/* --- UKURAN TALI PENGHUBUNG --- */
+.tali-gantungan {
+    display: flex;
+    justify-content: space-between;
+    width: 76%; /* Jarak antar tali */
+    height: 35px; /* Tali normal sedikit lebih panjang */
+    position: relative;
+}
+.tali-panjang {
+    height: 55px; /* Tali khusus Card 1 ke Card 2 ekstra panjang */
+}
+.tali {
+    width: 5px; /* Tali agak tipis agar terlihat rapi */
+    height: 100%;
+    /* Tekstur pintalan tali warna soft beige */
+    background: repeating-linear-gradient(45deg, #D2B48C, #D2B48C 4px, #C19A6B 4px, #C19A6B 8px);
+    box-shadow: 1px 0 3px rgba(0,0,0,0.1);
+    border-radius: 2px;
+}
+
+/* --- PAKU ATAP (Agar tidak gantung) --- */
+.tali-atap { position: relative; }
+.paku-atap {
+    position: absolute;
+    top: -6px;
+    width: 10px;
+    height: 10px;
+    background: #8B5A2B;
+    border-radius: 50%;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.4), 1px 2px 3px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+.paku-atap.kiri { left: -2.5px; }
+.paku-atap.kanan { right: -2.5px; }
+
+/* --- BENTUK DASAR PAPAN KAYU (SOFT & MINIMALIST) --- */
+.papan-kayu {
+    width: 100%;
+    position: relative;
+    border-radius: 16px; /* Ujung lebih membulat (soft) */
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(139, 90, 43, 0.08); /* Bayangan sangat transparan */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(210, 180, 140, 0.4); /* Garis tepi tipis agar tidak kontras */
+}
+
+.papan-kayu.ditekan {
+    transform: scale(0.96) rotate(-1deg); /* Efek pantulan saat diklik lebih lembut */
+    box-shadow: 0 4px 10px rgba(139, 90, 43, 0.05);
+}
+
+/* --- DETAIL PAKU BAJA DI PAPAN (Dibuat lebih kecil & pudar) --- */
+.paku {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #A67B5B;
+    border-radius: 50%;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3), 1px 1px 2px rgba(0,0,0,0.1);
+}
+.paku-atas-kiri { top: 12px; left: 12%; transform: translateX(-1.5px); }
+.paku-atas-kanan { top: 12px; right: 12%; transform: translateX(1.5px); }
+.paku-bawah-kiri { bottom: 12px; left: 12%; transform: translateX(-1.5px); }
+.paku-bawah-kanan { bottom: 12px; right: 12%; transform: translateX(1.5px); }
+
+/* --- 4 DESAIN PAPAN KAYU SOFT BERBEDA --- */
+
+/* --- PERBAIKAN TOTAL LAYOUT PAPAN 1 (ANTI BERANTAKAN) --- */
+.papan-1 {
+    padding: 25px 15px; /* Padding dikembalikan ke ukuran normal */
+    border: 1.5px solid #D2B48C !important; /* Coklat muda yang tegas tapi tidak mencolok */
+}
+
+/* Membagi area menjadi 3 kolom: Kiri (Love), Tengah (Kopi+Teks), Kanan (Love) */
+.layout-papan-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px; /* Memberi jarak aman dari paku atas */
+}
+
+.selamatdng{
+  font-family:  'Playfair Display', 'Didot', 'Bodoni MT', serif;
+  font-size: 26px;
+}
+/* --- BERIKAN JARAK AMAN UNTUK TEKS --- */
+.tengah-papan-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 0 10px;
+    margin-top: 5px; /* Tambahan ruang kosong agar teks tidak terlalu menempel ke atas */
+}
+
+/* --- DERETAN LOVE --- */
+.love-jejer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #A0522D;
+    opacity: 0.85;
+}
+.l-1 { font-size: 24px; }
+.l-2 { font-size: 18px; }
+.l-3 { font-size: 12px; }
+
+/* --- CANGKIR KOPI PINDAH KE DALAM FLOW (LEBIH AMAN) --- */
+/* --- KEMBALIKAN CANGKIR KOPI MELAYANG KE ATAS --- */
+.cangkir-kopi {
+    position: absolute; 
+    top: -30px; /* Pas di garis atas papan kayu */
+    left: 50%;
+    transform: translateX(-50%); /* Kunci agar mutlak di tengah */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 5;
+    margin-bottom: 0; 
+    transition: transform 0.2s;
+}
+
+/* WAJIB tambahkan translateX(-50%) di sini agar cangkir tidak lari ke kiri saat dipencet */
+.cangkir-kopi:active { transform: translateX(-50%) scale(0.90); } 
+
+/* --- IKON CANGKIR EMOJI (Tanpa Lingkaran & Background) --- */
+.ikon-cangkir {
+    font-size: 45px; /* Ukuran emoji cangkir dibuat besar */
+    line-height: 1; /* Pastikan tidak ada spasi kosong di atas/bawah emoji */
+    margin: 0;
+    padding: 0;
+    /* Semua background, border, dan bayangan DIHAPUS */
+}
+
+/* --- LABEL MERAH --- */
+.label-seduh {
+    background-color: #d9534f;
+    color: var(--putih);
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-top: -5px; /* Sedikit naik agar menimpa bagian bawah emoji cangkir */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border: 1.5px solid var(--krem-lembut);
+    z-index: 2;
+    letter-spacing: 0.5px;
+}
+
+/* --- ELEMEN UAP ASAP --- */
+.asap-kopi {
+    position: absolute;
+    top: -10px; /* Disesuaikan dengan tinggi emoji */
+    width: 30px;
+    height: 25px;
+    pointer-events: none;
+}
+
+.uap {
+    position: absolute;
+    bottom: 0;
+    width: 6px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    filter: blur(2px);
+    opacity: 0;
+}
+.uap-1 { left: 4px; height: 16px; }
+.uap-2 { left: 14px; height: 24px; }
+.uap-3 { right: 4px; height: 14px; }
+
+/* Trigger Animasi Saat Diseduh */
+.cangkir-kopi.menyeduh .uap-1 { animation: terbangAsap 1.8s ease-in-out forwards; }
+.cangkir-kopi.menyeduh .uap-2 { animation: terbangAsap 2.4s ease-in-out forwards 0.2s; }
+.cangkir-kopi.menyeduh .uap-3 { animation: terbangAsap 1.5s ease-in-out forwards 0.4s; }
+
+@keyframes terbangAsap {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.9; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-40px) scale(2.2) rotate(15deg); opacity: 0; }
+}
+
+
+
+/* Papan 2: Motif Susun (Lebih redup) */
+.papan-2 {
+    background: repeating-linear-gradient(to bottom, #FAF0E6, #FAF0E6 12px, #FDF5E6 12px, #FDF5E6 24px);
+    border: 1.5px solid #C19A6B !important; /* Coklat susu sedikit lebih tua */
+    
+    /* --- IKON SUDUT PAPAN 2 --- */
+.ikon-sudut {
+    position: absolute;
+    color: #A67B5B; /* Warna coklat soft menyatu dengan papan 2 */
+    opacity: 0.5; /* Dibuat agak transparan agar tidak mendominasi */
+    font-size: 14px;
+}
+.ikon-sudut.kiri-atas { top: 15px; left: 15px; }
+.ikon-sudut.kanan-atas { top: 15px; right: 15px; }
+.ikon-sudut.kiri-bawah { bottom: 15px; left: 15px; }
+.ikon-sudut.kanan-bawah { bottom: 15px; right: 15px; }
+
+/* --- KOTAK TIMER 3D FLIP --- */
+.timer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    margin-top: 15px;
+}
+
+.waktu-box {
+    background-color: transparent; 
+    height: 60px; /* Tinggi pasti agar rotasi stabil */
+    cursor: pointer;
+    perspective: 1000px; /* PENTING: Memberikan efek kedalaman (ruang 3D) */
+    position: relative;
+    z-index: 1;
+}
+
+.waktu-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d; /* Wajib agar sisi depan-belakang terpisah */
+}
+
+/* Interaksi Saat Dibalik (Flip & Zoom) */
+.waktu-box.terbalik .waktu-box-inner {
+    transform: scale(1.15) rotateY(180deg);
+}
+.waktu-box.terbalik {
+    z-index: 10; /* Dinaikkan ke atas agar saat membesar tidak tertutup kotak lain */
+}
+
+/* Sisi Depan dan Belakang */
+.waktu-box-front, .waktu-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Sembunyikan bagian belakang saat diputar */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(139, 90, 43, 0.1);
+}
+
+/* Desain Sisi Depan (Angka) */
+.waktu-box-front {
+    background-color: rgba(255, 255, 255, 0.7); 
+    border: 1px solid rgba(193, 154, 107, 0.4);
+}
+.waktu-box-front span { font-size: 18px; font-weight: bold; color: #8B5A2B; line-height: 1.1; }
+.waktu-box-front small { font-size: 9px; color: #A0522D; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Desain Sisi Belakang (Motivasi) */
+.waktu-box-back {
+    background-color: #A0522D; /* Warna Coklat Solid Kemerahan */
+    border: 1px solid #8B4513;
+    transform: rotateY(180deg);
+    padding: 4px;
+    text-align: center;
+    overflow: hidden; /* PENTING: Mencegah teks bocor keluar kotak */
+}
+
+/* Tambahkan !important agar tidak kalah dengan teks papan kayu */
+.waktu-box-back p {
+    font-size: 9px !important; /* Paksa ukuran teks tetap kecil */
+    color: #FFFFFF !important; /* Paksa teks berwarna putih */
+    line-height: 1.3 !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    
+    /* Tambahan agar teks sejajar presisi di tengah */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+
+    
+}
+
+/* Papan 3: Gradasi Melingkar (Hangat) */
+.papan-3 {
+    background: radial-gradient(circle at center, #FFF8DC, #F5ECE4);
+    border: 1.5px solid #DEB887 !important; /* Burlywood/Krem gelap */
+}
+
+/* Papan 4: Garis Diagonal Halus */
+.papan-4 {
+    background: repeating-linear-gradient(45deg, #FDF5E6, #FDF5E6 8px, #F5ECE4 8px, #F5ECE4 16px);
+    border: 1.5px solid #B8860B !important; /* Coklat emas pudar */
+}
+
+
+/* --- PAPAN 4: CUACA KITA --- */
+.container-cuaca {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+.kartu-cuaca {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(193, 154, 107, 0.4);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.label-milik { font-size: 10px; font-weight: bold; color: #A0522D; margin-bottom: 5px; }
+.ikon-cuaca { font-size: 28px; color: #8B5A2B; margin: 8px 0; }
+.suhu { font-size: 18px; font-weight: bold; color: #5C4033; }
+.kartu-cuaca small { font-size: 9px; color: #8B5A2B; text-align: center; margin-top: 5px; line-height: 1.2; font-weight: bold;}
+
+/* --- PAPAN 4: KALENDER BERSAMA --- */
+.judul-kecil-kalender {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #5C4033;
+    text-align: center;
+    border-bottom: 1.5px dashed rgba(193, 154, 107, 0.5);
+    padding-bottom: 5px;
+}
+.container-kalender {
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1.5px solid rgba(193, 154, 107, 0.4);
+}
+.header-kalender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #8B5A2B;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+.header-kalender button {
+    background: none; border: none; color: #A0522D; font-size: 14px; cursor: pointer; padding: 5px; transition: 0.2s;
+}
+.header-kalender button:active { transform: scale(0.8); }
+.hari-kalender {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-bottom: 5px;
+}
+.tanggal-kalender {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+}
+.tgl-item {
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #5C4033;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+    transition: 0.2s;
+}
+.tgl-item:active { background: rgba(193, 154, 107, 0.4); transform: scale(0.9); }
+.tgl-kosong { visibility: hidden; }
+
+/* Lingkaran Titik Penanda di Kalender */
+.penanda {
+    position: absolute;
+    bottom: 3px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+.penanda.ku { background-color: #2E8B57; } /* Warnamu (Hijau) */
+.penanda.dia { background-color: #d9534f; } /* Warna Pasangan (Merah) */
+.tgl-item.hari-ini { border: 1.5px solid #8B5A2B; background: rgba(255, 255, 255, 0.8); }
+
+/* --- INTERAKSI KLIK TERPISAH (CUACA & KALENDER) --- */
+.kartu-cuaca {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+    cursor: pointer;
+}
+.kartu-cuaca:active {
+    transform: scale(0.92);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container-kalender {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* Hanya bereaksi saat bagian pinggirnya ditekan, tanpa mengganggu isi kalender */
+.container-kalender:active {
+    transform: scale(0.98); 
+}
+
+/* --- DESAIN CUSTOM MODAL KALENDER --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(92, 64, 51, 0.5); /* Overlay coklat gelap transparan */
+    display: none; /* Disembunyikan secara default */
+    justify-content: center; 
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(3px); /* Efek blur belakang layar */
+}
+
+.modal-box {
+    background: var(--krem-lembut);
+    border: 2px solid var(--coklat-muda);
+    padding: 20px;
+    border-radius: 15px;
+    width: 85%;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: popUpModal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popUpModal {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-box h3 { color: var(--coklat-tua); margin-bottom: 5px; font-size: 16px; }
+.modal-box p { color: #A0522D; font-size: 11px; margin-bottom: 15px; font-weight: bold; }
+
+.modal-box input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--coklat-muda);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    outline: none;
+    margin-bottom: 15px;
+    background: var(--putih);
+}
+
+.modal-action {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-action button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    transition: 0.2s;
+}
+
+.btn-batal { background: transparent; color: var(--coklat-sedang); border: 1.5px solid var(--coklat-sedang) !important; }
+.btn-simpan-kalender { background: #d9534f; color: var(--putih); }
+.modal-action button:active { transform: scale(0.9); }
+
+.btn-hapus-kalender { background: #8B4513; color: var(--putih); }
+
+
+/* Format teks untuk papan 2, 3, dan 4 */
+.papan-kayu h3:not(.papan-1 h3) { margin-bottom: 6px; font-size: 16px; color: #704214; }
+.papan-kayu p:not(.papan-1 p) { font-size: 12px; color: #A0522D; opacity: 0.9; }
+
+
+
+/* --- TOP BAR (BINGKAI ATAS LAYAR) --- */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px; /* Ukuran lebih kecil dari navigasi bawah */
+    background-color: var(--coklat-tua);
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    box-shadow: 0 4px 15px rgba(92, 64, 51, 0.2);
+    z-index: 100;
+}
+
+/* Beri jarak sedikit pada content area agar tidak tertutup top-bar */
+.content-area { padding-top: 25px; }
+
+
+
+/* --- AREA TUMPUKAN KARTU --- */
+.area-tumpukan {
+    position: relative;
+    height: 140px;
+    margin: 20px 0;
+    perspective: 1000px;
+}
+
+.kartu-item {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    left: 10%; /* Posisi di tengah */
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Sisi Depan (Cover Tumpukan) & Belakang (Isi Pesan) */
+.kartu-cover, .kartu-isi {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+}
+
+.kartu-cover {
+    background: repeating-linear-gradient(45deg, #8B5A2B, #8B5A2B 10px, #A0522D 10px, #A0522D 20px);
+    border: 3px solid #5C4033;
+    color: var(--krem-lembut);
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.kartu-isi {
+    transform: rotateY(180deg); /* Dibalik dari awal */
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    border: 2px solid var(--putih);
+}
+
+/* Efek Putar Saat Diklik */
+.kartu-item.terbuka {
+    transform: rotateY(180deg) scale(1.15) translateY(-10px) !important;
+    z-index: 100 !important;
+    cursor: default;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+/* --- 7 VARIASI DESAIN KARTU ISI --- */
+.desain-0 { background: #FFE4E1; color: #8B0000; } /* Misty Rose */
+.desain-1 { background: #E0FFFF; color: #008080; } /* Light Cyan */
+.desain-2 { background: #FFFACD; color: #B8860B; } /* Lemon Chiffon */
+.desain-3 { background: #E6E6FA; color: #4B0082; } /* Lavender */
+.desain-4 { background: #F5FFFA; color: #2E8B57; } /* Mint Cream */
+.desain-5 { background: #FFF0F5; color: #C71585; } /* Lavender Blush */
+.desain-6 { background: #FDF5E6; color: #A0522D; } /* Old Lace */
+
+/* --- AREA INPUT KARTU BARU (Revisi Tombol Simpan) --- */
+.area-input-kartu {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memaksa tombol untuk merapat ke kanan */
+    gap: 10px;
+    margin-top: 25px;
+    width: 100%;
+}
+.area-input-kartu input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid var(--coklat-muda);
+    background: var(--putih);
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+}
+.area-input-kartu button {
+  
+    width: auto; /* Tidak lagi penuh satu layar */
+    padding: 8px 24px; /* Ukuran mungil memanjang */
+    border-radius: 20px; /* Bentuk membulat ala pil */
+    background-color: var(--coklat-sedang); /* Warna coklat sejalan tema */
+    color: var(--putih);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 10px rgba(139, 90, 43, 0.2);
+}
+.area-input-kartu button:active { transform: scale(0.92); }
+
+#info-input-pesan { 
+    font-size: 9px; 
+    color: #d9534f; 
+    display: block; 
+    margin-top: 8px; 
+    font-weight: bold; 
+    text-align: left; /* Teks info tetap di kiri */
+    width: 100%;
+}
+
+/* --- CUSTOM ALERT (TOAST) DI KANAN ATAS --- */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none; /* Tidak mengganggu klik elemen di bawahnya */
+}
+
+.toast-alert {
+    background-color: var(--putih);
+    border-left: 4px solid var(--coklat-sedang); /* Garis tegas sesuai tema */
+    color: var(--coklat-tua);
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(92, 64, 51, 0.2);
+    font-size: 11px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Animasi masuk dari kanan, lalu keluar ke kanan setelah 3 detik */
+    animation: slideInRight 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, 
+               fadeOutToast 0.4s ease-in forwards 3s; 
+}
+
+/* Variasi Warna Notifikasi */
+.toast-alert.error { border-left-color: #d9534f; }
+.toast-alert.success { border-left-color: #2E8B57; }
+
+.toast-icon { font-size: 16px; }
+
+@keyframes slideInRight {
+    0% { transform: translateX(120%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOutToast {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(120%); opacity: 0; }
+}
+
+
+
+/* --- MERAPIKAN TEKS LOADING --- */
+.loading-teks {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #A0522D;
+    font-size: 12px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+
+
+/* --- DESAIN LONCENG & TITIK MERAH --- */
+.wadah-lonceng {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #C19A6B;
+    cursor: pointer;
+    z-index: 100;
+}
+.titik-merah {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid var(--krem-lembut);
+    animation: kedipMerah 1.5s infinite;
+}
+@keyframes kedipMerah { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+/* --- PANEL HISTORI NOTIFIKASI --- */
+.panel-notifikasi {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Sembunyi di luar layar kanan */
+    width: 300px;
+    max-width: 80%;
+    height: 100%;
+    background: var(--krem-lembut);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    z-index: 9999;
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+.panel-notifikasi.buka { right: 0; } /* Animasi masuk layar */
+
+.header-panel-notif {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--coklat-tua);
+    color: var(--putih);
+}
+.header-panel-notif button {
+    background: none; border: none; color: white; font-size: 20px; cursor: pointer;
+}
+.isi-notifikasi {
+    padding: 15px;
+    overflow-y: auto;
+    flex: 1;
+}
+.item-notif {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--coklat-muda);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-size: 11px;
+    color: #5C4033;
+}
+.item-notif.belum-baca { background: #fff3e0; border-left-color: red; font-weight: bold; }
+.waktu-notif { display: block; font-size: 9px; color: #A0522D; margin-top: 5px; }
+.notif-kosong { text-align: center; color: #A0522D; font-size: 12px; margin-top: 20px; }
